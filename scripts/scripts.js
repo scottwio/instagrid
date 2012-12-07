@@ -159,7 +159,7 @@
 
 	  		makeResponsive: function(){
 	  		var totalWidth = $('#instagram').width()		
-				, topItem = 0
+				, topItem = -1
 				, rowCount = 0
 				, removedOddItems
 				, itemNumber = 0
@@ -181,11 +181,16 @@
 				// the number of rows and how many items are contained in that row, this is then
 				// held inside gridStructureArray
 
+				/* 
+					so there is something wrong with this at when there is nothing
+					at the top of the page offset == 0 for all items in that row with breaks it
+				*/
+
 				$imgWrapper.each(function(index, element){
 				 	var position = $(element).position();
-				 	
-				 	if (position.top > topItem){
+				 	if (position.top > topItem ){
 				 		topItem = position.top;
+				 		
 				 		gridStructureArray.push([]);
 				 		rowCount++;
 				 		itemNumber = 0;	 		
@@ -201,7 +206,6 @@
 				function makeTheGridEven(){
 					var numberOfItemsInFullRow = gridStructureArray[0].length
 					, numberOfItemsToShow = 0;
-
 					for(var i = 0; i < gridStructureArray.length; i++){
 						if(gridStructureArray[i].length == numberOfItemsInFullRow){
 							numberOfItemsToShow += gridStructureArray[i].length;

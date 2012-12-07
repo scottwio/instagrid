@@ -3,7 +3,7 @@ body, html{margin: 0; padding: 0}
 
 /* base */
 
-#instagram{float: left; width: 100%;}
+#instagram{float: left; width: 100%; position: relative;}
 
 .image-wrapper{
     float: left;
